@@ -28,7 +28,9 @@ const UserTable = ({ rows }: { rows: StudentRow[] }) => {
   }, [router]);
   return (
     <Stack sx={{ width: "100%", height: "100%" }}>
-      <Typography variant="h6" fontSize={16} sx={{ mb: 1 }}>{t("table.liveStudentData")}</Typography>
+      <Typography variant="h6" fontSize={16} sx={{ mb: 1 }}>
+        {t("table.liveStudentData")}
+      </Typography>
       <Box sx={{ flex: 1 }}>
         <DataGrid
           rows={rows}

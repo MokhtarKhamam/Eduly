@@ -13,8 +13,9 @@ const ExamInformation = async ({
 }) => {
   const { t } = await initTranslations((await params).locale, ["home"]);
 
-
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/exam`, { cache: "no-store" });
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/exam`, {
+    cache: "no-store",
+  });
   const data: ExamData = await response.json();
 
   if (!data) return null;
@@ -22,13 +23,23 @@ const ExamInformation = async ({
   return (
     <Paper sx={{ px: 3, py: 2 }}>
       <Stack gap={3}>
-        <Typography variant="h6" fontSize={16}>{t("exam.keyInformation")}</Typography>
-        <Typography variant="h6" fontSize={16} fontWeight={600}>{t("exam.title")}</Typography>
+        <Typography variant="h6" fontSize={16}>
+          {t("exam.keyInformation")}
+        </Typography>
+        <Typography variant="h6" fontSize={16} fontWeight={600}>
+          {t("exam.title")}
+        </Typography>
         <Stack gap={1}>
           <ItemField text={data.subject} title={t("exam.fields.subject")} />
           <ItemField text={data.dateTime} title={t("exam.fields.dateTime")} />
-          <ItemField text={data.totalStudent.toString()} title={t("exam.fields.totalStudent")} />
-          <ItemField text={data.totalQuestion.toString()} title={t("exam.fields.totalQuestion")} />
+          <ItemField
+            text={data.totalStudent.toString()}
+            title={t("exam.fields.totalStudent")}
+          />
+          <ItemField
+            text={data.totalQuestion.toString()}
+            title={t("exam.fields.totalQuestion")}
+          />
         </Stack>
         <Stack gap={3} justifyContent="space-between" alignItems="center">
           <Typography>{t("exam.averageExamScore")}</Typography>

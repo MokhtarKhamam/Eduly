@@ -16,7 +16,7 @@ export function NavVerticalContent({
 
   return (
     <>
-      <Box sx={{ pl: 3.5, pt: 2.5, pb: 1 }}>
+      <Box sx={{ padding: "20px 12px 8px 12px" }}>
         <Logo />
       </Box>
       <Nav>

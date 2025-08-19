@@ -1,16 +1,25 @@
-import { Avatar, IconButton, Menu, MenuItem } from "@mui/material";
+import {
+  Avatar,
+  IconButton,
+  Menu,
+  MenuItem,
+  Typography,
+  Divider,
+} from "@mui/material";
 import React, { useState } from "react";
 import { deepPurple } from "@mui/material/colors";
 
-const AccountMeny = () => {
+const AccountMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <div>
       <IconButton
@@ -24,9 +33,9 @@ const AccountMeny = () => {
           Mk
         </Avatar>
       </IconButton>
+
       <Menu
         id="account-menu"
-        aria-labelledby="account-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -34,6 +43,7 @@ const AccountMeny = () => {
           paper: {
             elevation: 0,
             sx: {
+              width: 180,
               overflow: "visible",
               filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
               mt: 1.5,
@@ -61,12 +71,20 @@ const AccountMeny = () => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
+        <MenuItem disabled>
+          <Typography variant="subtitle2" fontWeight={600}>
+            Mokhtar Khamam
+          </Typography>
+        </MenuItem>
+        <Divider />
+
         <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Settings</MenuItem>
+        <Divider />
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
     </div>
   );
 };
 
-export default AccountMeny;
+export default AccountMenu;

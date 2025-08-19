@@ -2,16 +2,16 @@ import { NextResponse } from "next/server";
 
 export type ExamScoreEntry = {
   label: "excelent" | "medium" | "good" | "bad";
-  value: number; // 0..100
+  value: number;
 };
 
 export type ExamData = {
   subject: string;
-  dateTime: string; // human-readable
+  dateTime: string;
   totalStudent: number;
   totalQuestion: number;
   averageExamScore: ExamScoreEntry[];
-  studentComplete: number; // 0..totalStudent
+  studentComplete: number;
 };
 
 const baseExam: Omit<ExamData, "averageExamScore" | "studentComplete"> = {
@@ -26,9 +26,8 @@ function clamp(value: number, min: number, max: number): number {
 }
 
 export async function GET() {
-  const tick = Math.floor(Date.now() / 10_000); // changes every 10 seconds
+  const tick = Math.floor(Date.now() / 10_000);
 
-  // Average score entries change subtly every 10s
   const scoreBases: Array<{ label: ExamScoreEntry["label"]; base: number }> = [
     { label: "excelent", base: 73 },
     { label: "medium", base: 50 },
@@ -36,21 +35,20 @@ export async function GET() {
     { label: "bad", base: 37 },
   ];
 
-  // Build raw values
   const rawValues = scoreBases.map((entry, index) => {
-    const swing = (((tick + index * 2) % 13) - 6) * 0.8; // -4.8..+4.8
-    const frac = ((tick + index) % 100) / 100; // 0.00..0.99
+    const swing = (((tick + index * 2) % 13) - 6) * 0.8;
+    const frac = ((tick + index) % 100) / 100;
     const value = clamp(entry.base + swing + frac, 0, 100);
     return value;
   });
 
-  // Normalize to sum to 100
   const sumRaw = rawValues.reduce((acc, v) => acc + v, 0);
-  const normalized = sumRaw > 0 ? rawValues.map((v) => (v / sumRaw) * 100) : [25, 25, 25, 25];
+  const normalized =
+    sumRaw > 0 ? rawValues.map((v) => (v / sumRaw) * 100) : [25, 25, 25, 25];
 
-  // Round to 2 decimals and fix rounding drift so total stays exactly 100
   const rounded = normalized.map((v) => Math.round(v * 100) / 100);
-  const sumRounded = Math.round(rounded.reduce((acc, v) => acc + v, 0) * 100) / 100;
+  const sumRounded =
+    Math.round(rounded.reduce((acc, v) => acc + v, 0) * 100) / 100;
   const diff = Math.round((100 - sumRounded) * 100) / 100;
   if (diff !== 0) {
     const idxMax = normalized.indexOf(Math.max(...normalized));
@@ -62,9 +60,9 @@ export async function GET() {
     value: rounded[index],
   }));
 
-  // Students completed increases over time and wraps at total
   const completeBase = 12;
-  const studentComplete = (completeBase + tick * 3) % (baseExam.totalStudent + 1);
+  const studentComplete =
+    (completeBase + tick * 3) % (baseExam.totalStudent + 1);
 
   const payload: ExamData = {
     ...baseExam,
@@ -78,5 +76,3 @@ export async function GET() {
     },
   });
 }
-
-
