@@ -1,0 +1,37 @@
+{
+  "wege": "wege",
+  "Products": "Products",
+  "Search…": "Search…",
+  "myCart": "My Cart",
+  "summary": "Summary",
+  "subtotal": "Subtotal",
+  "save": "Save",
+  "emptyCart": "Empty Cart",
+  "nav": {
+    "main": "Main",
+    "home": "Home",
+    "settings": "Settings",
+    "other": "Other",
+    "help": "Help"
+  },
+  "exam": {
+    "keyInformation": "Exam Key Information",
+    "title": "Math Exam",
+    "fields": {
+      "subject": "Subject",
+      "dateTime": "Date/Time",
+      "totalStudent": "Total Students",
+      "totalQuestion": "Total Questions"
+    },
+    "averageExamScore": "Average exam score",
+    "studentComplete": "Student Complete"
+  },
+  "table": {
+    "liveStudentData": "Live Student Data",
+    "name": "Name",
+    "completedQuestions": "Completed Questions",
+    "averageTimePerQuestion": "Average time per question",
+    "liveScore": "Live Score",
+    "status": "Status"
+  }
+}

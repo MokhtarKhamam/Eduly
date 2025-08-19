@@ -1,6 +1,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --layout-header-zIndex: 1100;
+  --layout-header-mobile-height: 56px;
+  --layout-header-desktop-height: 64px;
+  --layout-nav-zIndex: 1200;
+  --layout-nav-bg: #ffffff;
+  --layout-nav-mini-width: 80px;
+  --layout-nav-vertical-width: 280px;
+  --layout-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --layout-transition-duration: 200ms;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -10,15 +19,16 @@
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+html {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 100%;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

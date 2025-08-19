@@ -1,0 +1,37 @@
+{
+  "wege": "wege",
+  "Products": "المنتجات",
+  "Search…": "ابحث…",
+  "myCart": "سلتي",
+  "summary": "الملخص",
+  "subtotal": "المجموع",
+  "save": "حفظ",
+  "emptyCart": "افراغ السلة",
+  "nav": {
+    "main": "الرئيسية",
+    "home": "الصفحة الرئيسية",
+    "settings": "الإعدادات",
+    "other": "أخرى",
+    "help": "مساعدة"
+  },
+  "exam": {
+    "keyInformation": "معلومات أساسية عن الامتحان",
+    "title": "امتحان الرياضيات",
+    "fields": {
+      "subject": "المادة",
+      "dateTime": "التاريخ/الوقت",
+      "totalStudent": "إجمالي الطلاب",
+      "totalQuestion": "إجمالي الأسئلة"
+    },
+    "averageExamScore": "متوسط درجات الامتحان",
+    "studentComplete": "الطلاب المكتملون"
+  },
+  "table": {
+    "liveStudentData": "بيانات الطلاب المباشرة",
+    "name": "الاسم",
+    "completedQuestions": "الأسئلة المكتملة",
+    "averageTimePerQuestion": "متوسط الوقت لكل سؤال",
+    "liveScore": "الدرجة الحالية",
+    "status": "الحالة"
+  }
+}
