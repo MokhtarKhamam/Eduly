@@ -44,3 +44,7 @@ i18next
 for translations
 
 TypeScript
+
+
+# Note
+Unit tests for a key component are not yet implemented.
